@@ -5,11 +5,23 @@ site_author: Chin-Yu Tsai
 
 theme:
   name: material
+  features:
+    - content.code.copy
+
+markdown_extensions:
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
 
 nav:
   - Home: index.md
   - Lab Notes:
+    - 第一週結束：工具到位，流程跑通: lab/2026-05-06-week1-review.md
     - 53歲開箱日：一台小機器，一個大決定: lab/2026-04-22-z2mini-unboxing.md
+    - 讓 AI 看進我的筆記本：MCP 設定踩坑全紀錄: lab/2026-04-23-mcp-setup-pitfalls.md
     - 當 eval 腳本遇上金融法規：雙軌評分系統的誕生: lab/2026-05-04-eval-as-lab-asset.md
+    - 工作流比模型重要：發布流水線建立全紀錄: lab/2026-05-05-publishing-pipeline.md
   - Benchmark: benchmark/
   - RAG Demo: rag/
