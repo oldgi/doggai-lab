@@ -1,8 +1,4 @@
-/* 隱藏導航列表的 tags info icon */
-.md-nav__link .md-nav__icon {
-  display: none;
-}
-
-.md-nav__item .md-icon {
-  display: none;
+/* 隱藏 draft status icon */
+.md-status {
+  display: none !important;
 }

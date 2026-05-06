@@ -22,6 +22,26 @@ jobs:
 
       - run: pip install mkdocs-material
 
+      - name: Strip status:draft from published articles
+        run: |
+          python3 << 'EOF'
+          import os
+          import re
+
+          lab_dir = "docs/lab"
+          for fname in os.listdir(lab_dir):
+              if not fname.endswith(".md"):
+                  continue
+              fpath = os.path.join(lab_dir, fname)
+              with open(fpath, encoding="utf-8") as f:
+                  content = f.read()
+              updated = re.sub(r'\nstatus: draft', '', content)
+              if updated != content:
+                  with open(fpath, "w", encoding="utf-8") as f:
+                      f.write(updated)
+                  print(f"Stripped draft status: {fname}")
+          EOF
+
       - name: Auto-update latest articles in index.md
         run: |
           python3 << 'EOF'
@@ -31,13 +51,11 @@ jobs:
           lab_dir = "docs/lab"
           index_path = "docs/index.md"
 
-          # 掃描 lab/ 底下所有 md 檔，依檔名排序（新的在前）
           files = sorted(
               [f for f in os.listdir(lab_dir) if f.endswith(".md")],
               reverse=True
           )
 
-          # 從每個檔案抓標題
           articles = []
           for fname in files:
               fpath = os.path.join(lab_dir, fname)
@@ -50,14 +68,11 @@ jobs:
                           articles.append(f"- [{title}]({link})")
                           break
 
-          # 組合新的最新文章區塊
           new_block = "## 最新文章\n\n" + "\n".join(articles) + "\n"
 
-          # 讀取 index.md
           with open(index_path, encoding="utf-8") as f:
               content = f.read()
 
-          # 替換最新文章區塊（## 最新文章 到下一個 ## 之間）
           pattern = r"## 最新文章\n.*?(?=\n## |\Z)"
           new_content = re.sub(pattern, new_block.rstrip(), content, flags=re.DOTALL)
 
