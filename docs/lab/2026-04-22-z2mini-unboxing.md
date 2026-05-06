@@ -18,7 +18,7 @@ status: draft
 
 ## 暗爽之心發動
 
-![暗爽之心發動](../assets/images/0422_OPENBOX.PNG)
+![暗爽之心發動](../assets/images/0422_OPENBOX.png)
 
 ---
 
@@ -48,13 +48,13 @@ status: draft
 
 ## 晒個美照
 
-![開箱瞬間](../assets/images/0422_UNPACK.png)
+![開箱瞬間](../assets/images/0422_UNPACK.jpg)
 
-![手機比劃大小](../assets/images/0422_mini_size.png)
+![手機比劃大小](../assets/images/0422_mini_size.jpg)
 
-![AMD AI Max PRO](../assets/images/0422_amd_AI_max_pro.png)
+![AMD AI Max PRO](../assets/images/0422_amd_AI_max_pro.jpg)
 
-![首次開機](../assets/images/0422_power_on.png)
+![首次開機](../assets/images/0422_power_on.jpg)
 
 ---
 
