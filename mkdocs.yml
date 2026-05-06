@@ -1,4 +1,4 @@
-﻿site_name: doggai-lab
+site_name: doggai-lab
 site_url: https://lab.tsaichinyu.com
 site_description: On-prem AI Lab | Run it. Learn it. Own it.
 site_author: Chin-Yu Tsai
@@ -8,6 +8,8 @@ theme:
 
 nav:
   - Home: index.md
-  - Lab Notes: lab/
+  - Lab Notes:
+    - 53歲開箱日：一台小機器，一個大決定: lab/2026-04-22-z2mini-unboxing.md
+    - 當 eval 腳本遇上金融法規：雙軌評分系統的誕生: lab/2026-05-04-eval-as-lab-asset.md
   - Benchmark: benchmark/
   - RAG Demo: rag/
