@@ -7,7 +7,7 @@ published_date: 2026-05-10
 
 ![doggAI Lab](../assets/images/doggiAItitle.png)
 
-![](../assets/images/0505_Publish_Take_Away.PNG)
+![](../assets/images/0505_Publish_Take_Away.png)
 
 # 工作流比模型重要：發布流水線建立全紀錄
 
