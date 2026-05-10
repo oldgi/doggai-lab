@@ -1,10 +1,13 @@
----
+﻿---
 date: 2026-05-05
 tags: [doggai-lab, workflow, mkdocs, github-actions, aj53]
-status: draft
+status: published
+published_date: 2026-05-10
 ---
 
 ![doggAI Lab](../assets/images/doggiAItitle.png)
+
+![](../assets/images/0505_Publish_Take_Away.PNG)
 
 # 工作流比模型重要：發布流水線建立全紀錄
 
