@@ -22,24 +22,46 @@ jobs:
 
       - run: pip install mkdocs-material
 
-      - name: Strip status:draft from published articles
+      - name: Auto-update nav in mkdocs.yml
         run: |
           python3 << 'EOF'
           import os
           import re
 
           lab_dir = "docs/lab"
-          for fname in os.listdir(lab_dir):
-              if not fname.endswith(".md"):
-                  continue
+          mkdocs_path = "mkdocs.yml"
+
+          files = sorted(
+              [f for f in os.listdir(lab_dir) if f.endswith(".md")],
+              reverse=True
+          )
+
+          nav_entries = []
+          for fname in files:
               fpath = os.path.join(lab_dir, fname)
+              title = fname
               with open(fpath, encoding="utf-8") as f:
-                  content = f.read()
-              updated = re.sub(r'\nstatus: draft', '', content)
-              if updated != content:
-                  with open(fpath, "w", encoding="utf-8") as f:
-                      f.write(updated)
-                  print(f"Stripped draft status: {fname}")
+                  for line in f:
+                      line = line.strip()
+                      if line.startswith("# "):
+                          title = line[2:].strip()
+                          break
+              nav_entries.append(f"    - {title}: lab/{fname}")
+
+          new_block = "  - Lab Notes:\n" + "\n".join(nav_entries) + "\n"
+
+          with open(mkdocs_path, encoding="utf-8") as f:
+              content = f.read()
+
+          pattern = r"  - Lab Notes:\n(?:    - .+\n)+"
+          new_content = re.sub(pattern, new_block, content)
+
+          with open(mkdocs_path, "w", encoding="utf-8") as f:
+              f.write(new_content)
+
+          print("Updated nav:")
+          for e in nav_entries:
+              print(e)
           EOF
 
       - name: Auto-update latest articles in index.md
